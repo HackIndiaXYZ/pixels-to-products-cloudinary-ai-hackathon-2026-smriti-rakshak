@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pixel2Product — AI Product Studio</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+            <span>Pixel2Product</span>
+        </div>
+
+        <div class="nav-right">
+
+            <span class="status-dot"></span>
+
+            Cloudinary AI Connected
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="eyebrow">
+                ✦ AI PRODUCT VISUAL STUDIO
+            </div>
+
+            <h1>
+                Create product visuals
+                <span>without a photoshoot.</span>
+            </h1>
+
+            <p>
+                Transform product ideas into premium marketing visuals
+                through an intelligent Cloudinary-powered generation workflow.
+            </p>
+
+        </section>
+
+
+
+        <!-- WORKSPACE -->
+
+        <main class="workspace">
+
+
+            <!-- =========================
+                 CREATIVE SETUP
+            ========================== -->
+
+            <section class="card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Creative Setup
+                        </h2>
+
+                        <div class="feature-note">
+                            Build your visual campaign
+                        </div>
+
+                    </div>
+
+                    <span class="step">
+                        01 / 02
+                    </span>
+
+                </div>
+
+
+
+                <!-- REFERENCE IMAGE -->
+
+                <label>
+                    PRODUCT REFERENCE
+                </label>
+
+
+                <div
+                    class="upload-box"
+                    id="uploadBox"
+                >
+
+
+                    <!-- EMPTY STATE -->
+
+                    <div id="uploadEmpty">
+
+                        <div class="upload-icon">
+                            ↑
+                        </div>
+
+                        <div class="upload-title">
+                            Add a product reference
+                        </div>
+
+                        <div class="upload-subtitle">
+                            Guide the AI to preserve your product
+                        </div>
+
+
+                        <label class="upload-button">
+
+                            Choose Image
+
+                            <input
+                                type="file"
+                                id="imageInput"
+                                accept="image/png,image/jpeg,image/webp"
+                                hidden
+                            >
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- IMAGE PREVIEW -->
+
+                    <div
+                        id="imagePreview"
+                        style="display:none;"
+                    >
+
+                        <img
+                            id="previewImage"
+                            alt="Product reference preview"
+                            style="
+                                width:100%;
+                                max-height:150px;
+                                object-fit:contain;
+                                border-radius:10px;
+                                margin-bottom:10px;
+                                display:block;
+                            "
+                        >
+
+
+                        <div
+                            id="fileName"
+                            class="file-name"
+                        ></div>
+
+
+                        <label class="upload-button">
+
+                            Replace Image
+
+                            <input
+                                type="file"
+                                id="imageInputReplace"
+                                accept="image/png,image/jpeg,image/webp"
+                                hidden
+                            >
+
+                        </label>
+
+
+                        <button
+                            type="button"
+                            id="removeImage"
+                            class="hint"
+                            style="margin-left:5px;"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CREATIVE PROMPT -->
+
+                <label for="prompt">
+                    CREATIVE DIRECTION
+                </label>
+
+
+                <textarea
+                    id="prompt"
+                    placeholder="Describe the scene, lighting, mood, background and campaign style..."
+                ></textarea>
+
+
+
+                <!-- PROMPT PRESETS -->
+
+                <div class="prompt-hints">
+
+
+                    <button
+                        type="button"
+                        class="hint"
+                        data-prompt="Premium commercial product photography with soft studio lighting, realistic shadows, elegant composition and luxury branding aesthetics"
+                    >
+                        ✨ Luxury Studio
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="hint"
+                        data-prompt="Modern lifestyle advertisement with a premium urban background, cinematic lighting and realistic commercial photography"
+                    >
+                        ◉ Lifestyle
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="hint"
+                        data-prompt="Minimal clean e-commerce product photography with elegant composition, soft shadows and a premium white studio background"
+                    >
+                        ◇ E-commerce
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- MODEL + VARIATIONS -->
+
+                <div class="control-grid">
+
+
+                    <div>
+
+                        <label for="model">
+                            AI MODEL
+                        </label>
+
+
+                        <select id="model">
+
+                            <option value="auto">
+                                Auto · Balanced
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <label for="variations">
+                            VARIATIONS
+                        </label>
+
+
+                        <select id="variations">
+
+                            <option value="1">
+                                1 Visual
+                            </option>
+
+                            <option value="2">
+                                2 Visuals
+                            </option>
+
+                            <option
+                                value="3"
+                                selected
+                            >
+                                3 Visuals
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- GENERATE -->
+
+                <button id="generateBtn">
+
+                    ✦ Generate Product Visuals
+
+                </button>
+
+
+
+                <!-- WORKFLOW -->
+
+                <div class="workflow">
+
+
+                    <div class="workflow-line"></div>
+
+
+                    <div class="workflow-item active">
+
+                        <span>
+                            01
+                        </span>
+
+                        Generate
+
+                    </div>
+
+
+                    <div class="workflow-item">
+
+                        <span>
+                            02
+                        </span>
+
+                        Transform
+
+                    </div>
+
+
+                    <div class="workflow-item">
+
+                        <span>
+                            03
+                        </span>
+
+                        Deliver
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 GENERATED RESULTS
+            ========================== -->
+
+            <section class="results">
+
+
+                <div class="results-header">
+
+
+                    <div>
+
+                        <h2>
+                            Generated Assets
+                        </h2>
+
+                        <div class="results-subtitle">
+                            Your campaign-ready visuals
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-status">
+
+                        <span class="status-dot"></span>
+
+                        Cloudinary Delivery
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- GENERATION STATUS -->
+
+                <div
+                    id="generationStatus"
+                    class="generation-status"
+                >
+
+                    <div class="loader"></div>
+
+                    <span>
+                        Preparing your creative workflow...
+                    </span>
+
+                </div>
+
+
+
+                <!-- RESULTS -->
+
+                <div id="resultsContainer">
+
+
+                    <div class="placeholder">
+
+
+                        <div class="placeholder-glow">
+                            ✦
+                        </div>
+
+
+                        <strong>
+                            Your creative workspace is ready
+                        </strong>
+
+
+                        <span>
+                            Add a product reference or describe your campaign
+                            and generate your first visual.
+                        </span>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+
+            <span>
+                Pixel2Product
+            </span>
+
+
+            <span>
+                AI Generation · Cloudinary Storage · Intelligent Delivery
+            </span>
+
+
+        </footer>
+
+    </div>
+
+
+
+    <!-- =========================
+         SCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+
+        /* =========================
+           REFERENCE IMAGE PREVIEW
+        ========================== */
+
+        const imageInput =
+            document.getElementById("imageInput");
+
+
+        const imageInputReplace =
+            document.getElementById("imageInputReplace");
+
+
+        const uploadEmpty =
+            document.getElementById("uploadEmpty");
+
+
+        const imagePreview =
+            document.getElementById("imagePreview");
+
+
+        const previewImage =
+            document.getElementById("previewImage");
+
+
+        const fileName =
+            document.getElementById("fileName");
+
+
+        const removeImage =
+            document.getElementById("removeImage");
+
+
+
+        function showPreview(file) {
+
+            if (!file) {
+                return;
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload = function(event) {
+
+                previewImage.src =
+                    event.target.result;
+
+
+                fileName.textContent =
+                    "✓ " + file.name;
+
+
+                uploadEmpty.style.display =
+                    "none";
+
+
+                imagePreview.style.display =
+                    "block";
+
+            };
+
+
+            reader.readAsDataURL(file);
+
+        }
+
+
+
+        imageInput.addEventListener(
+            "change",
+            function() {
+
+                showPreview(
+                    imageInput.files[0]
+                );
+
+            }
+        );
+
+
+
+        imageInputReplace.addEventListener(
+            "change",
+            function() {
+
+                showPreview(
+                    imageInputReplace.files[0]
+                );
+
+            }
+        );
+
+
+
+        removeImage.addEventListener(
+            "click",
+            function() {
+
+                imageInput.value = "";
+
+                imageInputReplace.value = "";
+
+                previewImage.src = "";
+
+                fileName.textContent = "";
+
+                imagePreview.style.display =
+                    "none";
+
+                uploadEmpty.style.display =
+                    "block";
+
+            }
+        );
+
+
+
+        /* =========================
+           PROMPT PRESETS
+        ========================== */
+
+        document
+            .querySelectorAll(".hint[data-prompt]")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        document.getElementById("prompt").value =
+                            button.dataset.prompt;
+
+                    }
+                );
+
+            });
+
+
+    </script>
+
+</body>
+
+</html>
